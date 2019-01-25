@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"bytes"
 	"flag"
 	"fmt"
 	"golang.org/x/crypto/ssh"
@@ -127,12 +126,9 @@ func (c SshConn) Connect() {
 func (c SshConn) FormatedIp() string {
 	n := 16 - len(c.ip)
 	color := bashColors[c.index%len(bashColors)]
-	var padding bytes.Buffer
-	for i := 0; i < n; i++ {
-		padding.WriteString(" ")
-	}
+	padding := strings.Repeat(" ", n)
 
-	return fmt.Sprintf("\033[%dm%s:\033[39m%s", color, c.ip, padding.String())
+	return fmt.Sprintf("\033[%dm%s:\033[39m%s", color, c.ip, padding)
 }
 
 func sshConfig(p *Params) *ssh.ClientConfig {
