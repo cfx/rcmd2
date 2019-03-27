@@ -47,7 +47,7 @@ func (p *Params) Parse() (*Params, error) {
 
 	keyPathPtr := flag.String("k", "", "path to PEM key")
 	userPtr := flag.String("u", "", "username")
-	ipsPtr := flag.String("H", "", "List of host IPs")
+	ipsPtr := flag.String("H", "", "List of host IPs (comma separated)")
 	commandPtr := flag.String("c", "", "Command to run")
 	timeoutPtr := flag.Int("t", 30, "Timeout in seconds")
 	showIpPtr := flag.Bool("show-ip", true, "show host IP for every line")
